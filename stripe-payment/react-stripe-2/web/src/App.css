@@ -1,0 +1,12 @@
+.App {
+  text-align: center;
+}
+
+.App__img {
+  max-height: 200px;
+  padding: 20px;
+}
+
+.App__button {
+  background-color: gold;
+}
