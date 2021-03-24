@@ -1,5 +1,5 @@
 // npm i react-currency-format
-import React from "react";
+import React, { useState } from "react";
 import "./Subtotal.css";
 import CurrencyFormat from "react-currency-format";
 import { useStateValue } from "../StateProvider";
@@ -7,10 +7,39 @@ import { getBasketTotal } from "../reducer";
 import { useHistory } from "react-router-dom";
 
 function Subtotal() {
-  const history = useHistory();
-  const [{ basket }, dispatch] = useStateValue();
+  const history = useHistory(); ///
+  const [{ basket, user }, dispatch] = useStateValue();
+  const [disabled, setDisabled] = useState("");
+
+  const value = getBasketTotal(basket);
+  const username = user?.email;
+
+  const handleChange = () => {
+    console.log(value);
+    if (value === 0) {
+      setDisabled(true);
+      //const msg = "Your shopping basket is empty";
+      //alert(msg);
+    } else {
+      setDisabled(false);
+    }
+    console.log(value);
+  };
+
+  const paymentPage = (e) => {
+    console.log(username);
+    if (!username) {
+      history.push("/login");
+    } else {
+      history.push("/checkoutform");
+    }
+  };
+
   return (
     <div className="subtotal">
+      <p>
+        Ordered By: <strong>{!user ? "Guest User" : user?.email} </strong>
+      </p>
       <CurrencyFormat
         renderText={(value) => (
           <>
@@ -18,7 +47,7 @@ function Subtotal() {
               Subtotal ({basket.length} items): <strong>{value}</strong>
             </p>
             <small className="subtotal__gift">
-              <input type="checkbox" /> This order conatins a gift
+              <input type="checkbox" /> Confirm My Order
             </small>
           </>
         )}
@@ -28,8 +57,12 @@ function Subtotal() {
         thousandSeperator={true}
         prefix={"€"}
       />
-
-      <button onClick={(e) => history.push("/payment")}>
+      <button
+        type="submit"
+        disabled={disabled}
+        onMouseDownCapture={handleChange}
+        onClick={paymentPage}
+      >
         Proceed to Checkout
       </button>
     </div>
