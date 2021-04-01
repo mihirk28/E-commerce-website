@@ -9,6 +9,7 @@ function Login() {
   // set up email and password using useState
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [address, setAddress] = useState("");
 
   const signIn = (e) => {
     {
@@ -38,6 +39,9 @@ function Login() {
         // after successful sign Up, it automatically brings to homepage
         if (auth) {
           history.push("/");
+          return auth.user.updateProfile({
+            displayName: address,
+          });
         }
       })
       .catch((error) => alert(error.message));
@@ -70,6 +74,12 @@ function Login() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+          />
+          <h5>Address</h5>
+          <input
+            type="text"
+            value={address}
+            onChange={(e) => setAddress(e.target.value)}
           />
           <button
             className="login__signInButton"

@@ -35,7 +35,6 @@ function CheckoutForm() {
         const response = await axios.post("http://localhost:5000/payment", {
           amount: getBasketTotal(basket) * 100,
           id,
-          customer: user?.email,
         });
 
         if (response.data.success) {
@@ -49,6 +48,7 @@ function CheckoutForm() {
               basket: basket,
               amount: getBasketTotal(basket),
               created: paymentMethod.created,
+              address: user?.displayName,
             });
 
           console.log("Successful payment");
@@ -71,6 +71,15 @@ function CheckoutForm() {
 
   return (
     <div>
+      <div className="payment__section">
+        <div className="payment__title">
+          <h3>Delivery Address</h3>
+        </div>
+        <div className="payment__address">
+          <p>{user?.email}</p>
+          <p>{user?.displayName}</p>
+        </div>
+      </div>
       <form onSubmit={handleSubmit} className="checkoutForm__form">
         <h2>Payment Form</h2>
         <CurrencyFormat
