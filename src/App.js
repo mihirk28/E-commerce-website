@@ -8,14 +8,13 @@ import Checkout from "./components/Checkout";
 import Login from "./components/Login";
 import { auth } from "./firebase";
 import { useStateValue } from "./StateProvider";
-import Payment from "./components/Payment";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./components/CheckoutForm";
 import Orders from "./components/Orders";
 
 const stripePromise = loadStripe(
-  "pk_test_51IT86CExWNxTV3d9mifRQWlEeRvnlcj4CxnzXFJd3ymcXNwv8FcnVN0cRDYBQg1oVS8zTmp5Ww33jBivc4G15hwE00xcL9BJOs"
+  //" ADD PUBLIC KEY OF STRIPE"
 );
 
 function App() {
@@ -55,6 +54,7 @@ function App() {
             <Orders />
           </Route>
           <Route path="/login">
+            <Header />
             <Login />
           </Route>
           <Route path="/checkout">
