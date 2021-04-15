@@ -29,7 +29,10 @@ function Orders() {
 
   return (
     <div className="orders">
-      <h2>Successful Orders</h2>
+      <div className="orders__header">
+        <h1>Order History</h1>
+      </div>
+
       <div className="orders__order">
         {orders?.map((order) => (
           <Order order={order} />

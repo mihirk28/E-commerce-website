@@ -73,7 +73,7 @@ function CheckoutForm() {
     <div>
       <div className="payment__section">
         <div className="payment__title">
-          <h3>Delivery Address</h3>
+          <h2>Delivery Address</h2>
         </div>
         <div className="payment__address">
           <p>{user?.email}</p>
@@ -85,7 +85,7 @@ function CheckoutForm() {
         <CurrencyFormat
           renderText={(value) => (
             <>
-              <p>
+              <p className="payment__amount">
                 Amount: <strong>{value}</strong>
               </p>
             </>
@@ -96,8 +96,12 @@ function CheckoutForm() {
           thousandSeperator={true}
           prefix={"€"}
         />
-        <CardElement />
-        <button type="submit" disabled={!stripe || processing || success}>
+        <CardElement className="payment__card" />
+        <button
+          className="payment__button"
+          type="submit"
+          disabled={!stripe || processing || success}
+        >
           Pay
         </button>
       </form>

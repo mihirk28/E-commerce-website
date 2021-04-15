@@ -1,5 +1,48 @@
 .checkoutForm__form {
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 100px;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 50px;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 150px;
+  padding: 20px;
+  background-color: #f3f3f3;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+}
+
+.checkoutForm__form > h2 {
+  text-align: center;
+}
+
+.payment__title {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.payment__address {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.payment__button {
+  margin: 0 auto;
+  background: #f0c14b;
+  border-radius: 2px;
+  width: 30%;
+  height: 30px;
+  border: 1px solid;
+  margin-top: 25px;
+  border-color: #a88734 #9c7e31 #846a29;
+  color: #111;
+}
+
+.payment__amount {
+  margin-top: 20px;
+}
+
+.payment__card {
+  margin-top: 10px;
 }

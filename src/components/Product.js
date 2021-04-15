@@ -2,7 +2,7 @@ import React from "react";
 import "./Product.css";
 import { useStateValue } from "../StateProvider";
 // props method in function to display different products
-function Product({ id, title, image, price, rating }) {
+function Product({ id, title, image, price }) {
   const [{ basket }, dispatch] = useStateValue();
 
   const addToBasket = () => {
@@ -14,26 +14,17 @@ function Product({ id, title, image, price, rating }) {
         title: title,
         image: image,
         price: price,
-        rating: rating,
       },
     });
   };
   return (
     <div className="product">
       <div className="product__info">
-        <p>{title}</p> {/*value inside brackets came from 'props'*/}
+        <h2>{title}</h2> {/*value inside brackets came from 'props'*/}
         <p className="product__price">
           <small>€</small>
           <strong>{price}</strong>
         </p>
-        <div className="product__rating">
-          {/* This Array function is to generate the stars as per the value */}
-          {Array(rating)
-            .fill()
-            .map((_, i) => (
-              <p>⭐</p>
-            ))}
-        </div>
       </div>
 
       <img src={image} alt="" />

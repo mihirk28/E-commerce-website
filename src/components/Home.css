@@ -4,14 +4,15 @@
   margin-left: auto;
   margin-right: auto;
   max-width: 1500px;
-  background-color: rgb(234, 237, 237);
+  background: #833ab4;
+  background: -webkit-linear-gradient(#fcb045, #fd1d1d, #833ab4);
 }
 
 .home__image {
   width: 100%;
   z-index: -1;
-  margin-bottom: -150px;
-  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+  margin-bottom: -350px;
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.05));
 }
 
 .home__row {

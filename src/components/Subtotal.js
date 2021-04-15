@@ -40,15 +40,16 @@ function Subtotal() {
       <p>
         Ordered By: <strong>{!user ? "Guest User" : user?.email} </strong>
       </p>
+
+      <p>
+        Delivery address: <strong>{user?.displayName}</strong>
+      </p>
       <CurrencyFormat
         renderText={(value) => (
           <>
             <p>
               Subtotal ({basket.length} items): <strong>{value}</strong>
             </p>
-            <small className="subtotal__gift">
-              <input type="checkbox" /> Confirm My Order
-            </small>
           </>
         )}
         decimalScale={2}
